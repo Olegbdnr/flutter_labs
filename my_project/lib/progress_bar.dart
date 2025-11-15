@@ -6,9 +6,9 @@ class ProgressBar extends StatelessWidget {
   final double progress; // value from 0.0 to 1.0
 
   const ProgressBar({
-    super.key,
     required this.title,
     required this.progress,
+    super.key
   });
 
   Color getProgressColor(double value) {

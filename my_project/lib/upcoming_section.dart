@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/deafult_blue_btn.dart';
 import 'package:my_project/progress_bar.dart';
 import 'package:my_project/text_styles.dart';
 
@@ -7,12 +8,10 @@ class UpcomingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -21,6 +20,7 @@ class UpcomingSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // SECTION TITLE
             Padding(
               padding: const EdgeInsets.only(left: 8),
               child: Text(
@@ -28,61 +28,41 @@ class UpcomingSection extends StatelessWidget {
                 style: AppTextStyles.sectionHeading(context),
               ),
             ),
-            for (final progress in [0.79, 0.21, 0.5])
-              Container(
+
+            const SizedBox(height: 10),
+
+            // PROGRESS CARDS — responsive width
+            ...[0.79, 0.21, 0.5].map((progress) {
+              return Container(
+                margin: const EdgeInsets.only(bottom: 12),
                 padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 15,
+                  horizontal: 16,
+                  vertical: 12,
                 ),
-                margin: const EdgeInsets.only(top: 10),
-                width: width * 0.90,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                ),
-                child: ProgressBar(title: 'Oil change', progress: progress),
-              ),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const UpcomingChangesPage(),
+                  boxShadow: [
+                    const BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 4,
+                      offset: Offset(0, 2),
                     ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue.withValues(
-                    alpha: 0.8,
-                  ), // 👈 light blue
-                  foregroundColor: Colors.white, // 👈 text color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
+                  ],
                 ),
-                child: Text(
-                  'See more >>',
-                  style: AppTextStyles.lightButton(context),
+                child: ProgressBar(
+                  title: 'Oil change',
+                  progress: progress,
                 ),
-              ),
-            ),
+              );
+            }),
+
+            const SizedBox(height: 4),
+
+            const BasicButton('See more >>')
           ],
         ),
       ),
     );
-  }
-}
-
-class UpcomingChangesPage extends StatelessWidget {
-  const UpcomingChangesPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
