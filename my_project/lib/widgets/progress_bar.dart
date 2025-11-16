@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/text_styles.dart';
+import 'package:my_project/styles/text_styles.dart';
 
 class ProgressBar extends StatelessWidget {
   final String title;

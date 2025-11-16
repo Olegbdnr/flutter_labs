@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:my_project/utils/font_helper.dart';
+
+class AppTextStyles {
+  static TextStyle appBarTittle(BuildContext context) => GoogleFonts.oswald(
+    fontSize: responsiveFont(context, base: 24, min: 18, max: 30),
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle heading(BuildContext context) => GoogleFonts.rubik(
+    fontSize: responsiveFont(
+      context,
+      base: MediaQuery.of(context).size.width * 0.07,
+      min: 20,
+      max: 34,
+    ),
+    color: Colors.black87,
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle main(BuildContext context, {Color? color}) =>
+      GoogleFonts.rubik(
+        fontSize: responsiveFont(
+          context,
+          base: MediaQuery.of(context).size.width * 0.04,
+          min: 14,
+          max: 22,
+        ),
+        color: color ?? const Color.fromARGB(221, 21, 21, 21),
+        fontWeight: FontWeight.w400,
+      );
+
+  static TextStyle sectionHeading(BuildContext context) => GoogleFonts.rubik(
+    fontSize: responsiveFont(
+      context,
+      base: MediaQuery.of(context).size.width * 0.05,
+      min: 16,
+      max: 28,
+    ),
+    color: const Color.fromARGB(221, 21, 21, 21),
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle lightButton(BuildContext context) => GoogleFonts.rubik(
+    fontSize: responsiveFont(
+      context,
+      base: MediaQuery.of(context).size.width * 0.04,
+      min: 14,
+      max: 22,
+    ),
+    color: Colors.white,
+    fontWeight: FontWeight.w500,
+  );
+}

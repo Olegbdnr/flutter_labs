@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/deafult_blue_btn.dart';
-import 'package:my_project/progress_bar.dart';
-import 'package:my_project/text_styles.dart';
+import 'package:my_project/styles/text_styles.dart';
+import 'package:my_project/widgets/deafult_blue_btn.dart';
+import 'package:my_project/widgets/progress_bar.dart';
 
 class UpcomingSection extends StatelessWidget {
   const UpcomingSection({super.key});
@@ -9,7 +9,7 @@ class UpcomingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
@@ -50,16 +50,13 @@ class UpcomingSection extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: ProgressBar(
-                  title: 'Oil change',
-                  progress: progress,
-                ),
+                child: ProgressBar(title: 'Oil change', progress: progress),
               );
             }),
 
             const SizedBox(height: 4),
 
-            const BasicButton('See more >>')
+            const BasicButton('See more >>'),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/text_styles.dart';
+import 'package:my_project/styles/text_styles.dart';
 
 class BasicButton extends StatelessWidget {
   final String text;
@@ -13,7 +13,7 @@ class BasicButton extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<Widget>(
                       builder: (context) => const UpcomingChangesPage(),
                     ),
                   );
