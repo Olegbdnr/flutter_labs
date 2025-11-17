@@ -28,8 +28,8 @@ class BasicButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(r.w(24)),
                   ),
                   padding: EdgeInsets.symmetric(
-                    horizontal: r.h(20),
-                    vertical: r.w(10),
+                    horizontal: r.w(20),
+                    vertical: r.h(10),
                   ),
                 ),
                 child: Text(
