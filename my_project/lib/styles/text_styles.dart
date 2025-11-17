@@ -13,7 +13,7 @@ class AppTextStyles {
       context,
       base: MediaQuery.of(context).size.width * 0.07,
       min: 20,
-      max: 34,
+      max: 42,
     ),
     color: Colors.black87,
     fontWeight: FontWeight.w700,
@@ -24,6 +24,18 @@ class AppTextStyles {
         fontSize: responsiveFont(
           context,
           base: MediaQuery.of(context).size.width * 0.04,
+          min: 14,
+          max: 26,
+        ),
+        color: color ?? const Color.fromARGB(221, 21, 21, 21),
+        fontWeight: FontWeight.w500,
+      );
+
+  static TextStyle smallLabel(BuildContext context, {Color? color}) =>
+      GoogleFonts.rubik(
+        fontSize: responsiveFont(
+          context,
+          base: MediaQuery.of(context).size.width * 0.03,
           min: 14,
           max: 22,
         ),
@@ -36,7 +48,7 @@ class AppTextStyles {
       context,
       base: MediaQuery.of(context).size.width * 0.05,
       min: 16,
-      max: 28,
+      max: 34,
     ),
     color: const Color.fromARGB(221, 21, 21, 21),
     fontWeight: FontWeight.w500,

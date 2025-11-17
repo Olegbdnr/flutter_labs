@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/styles/text_styles.dart';
+import 'package:my_project/utils/app_responsive.dart';
 
 class BasicButton extends StatelessWidget {
   final String text;
@@ -8,6 +9,8 @@ class BasicButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final r = AppResponsive.of(context);
+
     return Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -22,11 +25,11 @@ class BasicButton extends StatelessWidget {
                   backgroundColor: Colors.blue.withValues(alpha: 0.8),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(r.w(24)),
                   ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: r.h(20),
+                    vertical: r.w(10),
                   ),
                 ),
                 child: Text(

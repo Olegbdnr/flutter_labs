@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/styles/text_styles.dart';
+import 'package:my_project/utils/app_responsive.dart';
 import 'package:my_project/widgets/switch_button.dart';
 import 'package:my_project/widgets/upcoming_section.dart';
 
@@ -8,6 +9,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final r = AppResponsive.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('CarInfo', style: AppTextStyles.appBarTittle(context)),
@@ -17,50 +20,57 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: r.spacing(20)),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Image.asset(
-                      'assets/porsche911white.png',
-                      width: 280,
-                      fit: BoxFit.contain,
-                    ),
+                  Image.asset(
+                    'assets/porsche911white.png',
+                    width: r.image(280),
+                    fit: BoxFit.contain,
                   ),
-                  const SizedBox(height: 12),
                   Text(
                     'Porsche 911 Turbo S',
                     style: AppTextStyles.heading(context),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: r.h(20)),
                   Wrap(
-                    spacing: 26,
+                    spacing: r.w(26),
                     runSpacing: 20,
                     children: [
                       _buildControl(
+                        context,
                         icon: Icons.power_settings_new,
                         label: 'Start engine',
                       ),
-                      _buildControl(icon: Icons.highlight, label: 'Headlights'),
                       _buildControl(
+                        context,
+                        icon: Icons.highlight, label: 'Headlights'),
+                      _buildControl(
+                        context,
                         icon: Icons.door_back_door,
                         label: 'Open doors',
                       ),
                       _buildControl(
+                        context,
                         icon: Icons.cleaning_services,
                         label: 'Clean glass',
                       ),
                       _buildControl(
+                        context,
                         icon: Icons.volume_up_rounded,
                         label: 'Beep',
                       ),
-                      _buildControl(icon: Icons.luggage, label: 'Open trunk'),
+                      _buildControl(
+                        context,
+                        icon: Icons.luggage,
+                        label: 'Open trunk'),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: r.spacing(30)),
                   const UpcomingSection(),
-                  const SizedBox(height: 40),
+                  SizedBox(height: r.spacing(40)),
                 ],
               ),
             ),
@@ -70,13 +80,15 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildControl({required IconData icon, required String label}) {
+  Widget _buildControl(BuildContext context,
+   {required IconData icon,
+    required String label}) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         SwitchButton(icon: icon),
         const SizedBox(height: 6),
-        Text(label),
+        Text(label, style: AppTextStyles.smallLabel(context)),
       ],
     );
   }

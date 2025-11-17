@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/utils/app_responsive.dart';
 
 class SwitchButton extends StatefulWidget {
   final IconData icon;
@@ -14,8 +15,8 @@ class _SwitchButtonState extends State<SwitchButton> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final buttonSize = width * 0.17;
+    final r = AppResponsive.of(context);
+    final buttonSize = r.w(62);
     return ElevatedButton(
       onPressed: () => setState(() {
         isOn = !isOn;
@@ -31,7 +32,7 @@ class _SwitchButtonState extends State<SwitchButton> {
            borderRadius: BorderRadius.circular(12)
         ),
         fixedSize: Size(buttonSize, buttonSize),
-        iconSize: buttonSize / 1.5,
+        iconSize: buttonSize / 1.7,
         padding: EdgeInsets.zero,
       ),
       child: Icon(widget.icon)

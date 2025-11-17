@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/styles/text_styles.dart';
+import 'package:my_project/utils/app_responsive.dart';
 
 class ProgressBar extends StatelessWidget {
   final String title;
@@ -21,6 +22,7 @@ class ProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = getProgressColor(progress);
     final percent = (progress * 100).clamp(0, 100).toInt();
+    final r = AppResponsive.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +60,7 @@ class ProgressBar extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: r.w(8)),
           // Percentage
           Text(
             '$percent%',
