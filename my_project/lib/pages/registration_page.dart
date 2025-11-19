@@ -33,12 +33,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     fit: BoxFit.contain,
                   ),
                   'bmw' => Image.asset(
-                    'assets/porsche911white.png',
+                    'assets/bmw.png',
                     width: r.image(280),
                     fit: BoxFit.contain,
                   ),
                   'audi' => Image.asset(
-                    'assets/porsche911white.png',
+                    'assets/audi.png',
                     width: r.image(280),
                     fit: BoxFit.contain,
                   ),
