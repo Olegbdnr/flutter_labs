@@ -3,9 +3,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_project/utils/font_helper.dart';
 
 class AppTextStyles {
-  static TextStyle appBarTittle(BuildContext context) => GoogleFonts.oswald(
-    fontSize: responsiveFont(context, base: 24, min: 18, max: 30),
+  static TextStyle appBarTittle(BuildContext context,
+   {double? baseFontSize}) => GoogleFonts.oswald(
+    fontSize: responsiveFont(context,
+     base: baseFontSize?? MediaQuery.of(context).size.width * 0.06,
+     min: 18,
+     max: 64),
+    color: Colors.black87,
     fontWeight: FontWeight.w500,
+    decoration: TextDecoration.none,
   );
 
   static TextStyle heading(BuildContext context) => GoogleFonts.rubik(
