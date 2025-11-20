@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/pages/login_page.dart';
 import 'package:my_project/pages/registration_page.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Magic Counter',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const RegistrationPage(),
+      home: const LoginPage(),
     );
   }
 }

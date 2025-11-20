@@ -64,7 +64,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       value: 'porsche',
                       child: Text('Porsche 911'),
                     ),
-                    const DropdownMenuItem(value: 'bmw', child: Text('BMW M5')),
+                    const DropdownMenuItem(
+                      value: 'bmw', 
+                      child: Text('BMW M5')),
                     const DropdownMenuItem(
                       value: 'audi',
                       child: Text('Audi R8'),
@@ -75,6 +77,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       choosedCar = value;
                     });
                   },
+                ),
+                TextFormField(
+                  decoration: AppBoxStyles.inputDecoration(
+                    textLabel: 'Milieage in km'),
                 ),
                 TextFormField(
                   decoration: AppBoxStyles.inputDecoration(textLabel: 'Email'),
