@@ -18,6 +18,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   Widget build(BuildContext context) {
     final r = AppResponsive.of(context);
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: r.w(20)),
@@ -47,8 +48,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     style: AppTextStyles.appBarTittle(
                       context,
                       baseFontSize: 48,
-                    )
-                  )
+                    ),
+                  ),
                 },
                 const SizedBox(height: 10),
                 DropdownButtonFormField(
@@ -56,17 +57,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     textLabel: 'Chose your car',
                   ),
                   items: [
-                    const DropdownMenuItem(
-                      value: '',
-                      child: Text('None'),
-                    ),
+                    const DropdownMenuItem(value: '', child: Text('None')),
                     const DropdownMenuItem(
                       value: 'porsche',
                       child: Text('Porsche 911'),
                     ),
-                    const DropdownMenuItem(
-                      value: 'bmw', 
-                      child: Text('BMW M5')),
+                    const DropdownMenuItem(value: 'bmw', child: Text('BMW M5')),
                     const DropdownMenuItem(
                       value: 'audi',
                       child: Text('Audi R8'),
@@ -80,7 +76,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ),
                 TextFormField(
                   decoration: AppBoxStyles.inputDecoration(
-                    textLabel: 'Milieage in km'),
+                    textLabel: 'Milieage in km',
+                  ),
                 ),
                 TextFormField(
                   decoration: AppBoxStyles.inputDecoration(textLabel: 'Email'),
@@ -91,12 +88,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ),
                 TextFormField(
-                  decoration: AppBoxStyles.inputDecoration(
-                    textLabel: 'Name',
-                  ),
+                  decoration: AppBoxStyles.inputDecoration(textLabel: 'Name'),
                 ),
-                const SizedBox(height: 10,),
-                const BasicButton('Register')
+                const SizedBox(height: 10),
+                BasicButton(
+                  'Register',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute<Widget>(
+                        builder: (context) => const Placeholder(),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),

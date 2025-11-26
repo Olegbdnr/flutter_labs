@@ -52,7 +52,17 @@ class UpcomingSection extends StatelessWidget {
 
           SizedBox(height: r.h(6)),
 
-          const BasicButton('See more >>'),
+          BasicButton(
+            'See more >>',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<Widget>(
+                  builder: (context) => const Placeholder(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

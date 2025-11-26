@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/pages/login_page.dart';
 import 'package:my_project/styles/box_styles.dart';
 import 'package:my_project/styles/text_styles.dart';
 import 'package:my_project/utils/app_responsive.dart';
+import 'package:my_project/widgets/deafult_blue_btn.dart';
 import 'package:my_project/widgets/info_raw.dart';
 
 class UserPage extends StatelessWidget {
@@ -86,7 +88,7 @@ class UserPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: r.h(40)),
+                  SizedBox(height: r.h(20)),
                   DecoratedBox(
                     decoration: AppBoxStyles.basicContainer(context),
                     child: Padding(
@@ -132,6 +134,18 @@ class UserPage extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+                  SizedBox(height: r.h(20)),
+                  BasicButton(
+                    'Log out',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<Widget>(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

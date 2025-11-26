@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/main.dart';
+import 'package:my_project/pages/home_page.dart';
+import 'package:my_project/pages/registration_page.dart';
 import 'package:my_project/styles/box_styles.dart';
 import 'package:my_project/styles/text_styles.dart';
 import 'package:my_project/utils/app_responsive.dart';
@@ -11,6 +14,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final r = AppResponsive.of(context);
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: r.w(20)),
@@ -37,8 +41,28 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: r.spacing(20),
                   children: [
-                    const BasicButton('Login'),
-                    const BasicButton('Register'),
+                    BasicButton(
+                      'Login',
+                      onPressed: () {
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute<Widget>(
+                          builder: (context) => const MainNavigation(),
+                        ),
+                      );
+                      },  
+                    ),
+                    BasicButton(
+                      'Register',
+                      onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<Widget>(
+                          builder: (context) => const RegistrationPage(),
+                        ),
+                      );
+                    },
+                    ),
                 ],
                 ),
               ],

@@ -4,8 +4,9 @@ import 'package:my_project/utils/app_responsive.dart';
 
 class BasicButton extends StatelessWidget {
   final String text;
+  final VoidCallback? onPressed;
 
-  const BasicButton(this.text, {super.key});
+  const BasicButton(this.text, {required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +14,7 @@ class BasicButton extends StatelessWidget {
 
     return Center(
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<Widget>(
-                      builder: (context) => const UpcomingChangesPage(),
-                    ),
-                  );
-                },
+                onPressed: onPressed,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue.withValues(alpha: 0.8),
                   foregroundColor: Colors.white,
@@ -38,15 +32,5 @@ class BasicButton extends StatelessWidget {
                 ),
               ),
             );
-  }
-}
-
-
-class UpcomingChangesPage extends StatelessWidget {
-  const UpcomingChangesPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
