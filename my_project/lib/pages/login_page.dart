@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/main.dart';
-import 'package:my_project/pages/home_page.dart';
 import 'package:my_project/pages/registration_page.dart';
 import 'package:my_project/styles/box_styles.dart';
 import 'package:my_project/styles/text_styles.dart';
