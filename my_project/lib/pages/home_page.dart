@@ -22,7 +22,8 @@ class HomePage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10,
-                horizontal: r.spacing(20)),
+                horizontal: r.spacing(20),
+              ),
               child: Column(
                 children: [
                   Image.asset(
@@ -46,7 +47,9 @@ class HomePage extends StatelessWidget {
                       ),
                       _buildControl(
                         context,
-                        icon: Icons.highlight, label: 'Headlights'),
+                        icon: Icons.highlight,
+                        label: 'Headlights',
+                      ),
                       _buildControl(
                         context,
                         icon: Icons.door_back_door,
@@ -65,7 +68,8 @@ class HomePage extends StatelessWidget {
                       _buildControl(
                         context,
                         icon: Icons.luggage,
-                        label: 'Open trunk'),
+                        label: 'Open trunk',
+                      ),
                     ],
                   ),
                   SizedBox(height: r.spacing(30)),
@@ -80,15 +84,16 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildControl(BuildContext context,
-   {required IconData icon,
-    required String label}) {
+  Widget _buildControl(
+    BuildContext context, {
+    required IconData icon,
+    required String label,
+  }) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SwitchButton(icon: icon),
+        SwitchButton(icon: icon, buttonLabel: label),
         const SizedBox(height: 6),
-        Text(label, style: AppTextStyles.smallLabel(context)),
       ],
     );
   }
