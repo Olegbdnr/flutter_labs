@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/features/auth/auth_controller.dart';
 import 'package:my_project/pages/login_page.dart';
 import 'package:my_project/styles/box_styles.dart';
 import 'package:my_project/styles/text_styles.dart';
@@ -7,7 +8,9 @@ import 'package:my_project/widgets/deafult_blue_btn.dart';
 import 'package:my_project/widgets/info_raw.dart';
 
 class UserPage extends StatelessWidget {
-  const UserPage({super.key});
+  final AuthController authController;
+
+  const UserPage({required this.authController, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +145,9 @@ class UserPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute<Widget>(
-                          builder: (context) => const LoginPage(),
+                          builder: (context) => LoginPage(
+                            authController: authController,
+                          ),
                         ),
                       );
                     },

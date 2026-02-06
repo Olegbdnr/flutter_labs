@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/domain/entities/user.dart';
+import 'package:my_project/features/auth/auth_controller.dart';
 import 'package:my_project/styles/box_styles.dart';
 import 'package:my_project/styles/text_styles.dart';
 import 'package:my_project/utils/app_responsive.dart';
 import 'package:my_project/widgets/deafult_blue_btn.dart';
 
 class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({super.key});
+  final AuthController authController;
+
+  const RegistrationPage({
+    required this.authController,
+    super.key,
+  });
 
   @override
   State<RegistrationPage> createState() => _RegistrationPageState();
@@ -14,9 +21,39 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   String? choosedCar = '';
 
+  final TextEditingController _mileageController =
+      TextEditingController();
+  final TextEditingController _emailController =
+      TextEditingController();
+  final TextEditingController _passwordController =
+      TextEditingController();
+  final TextEditingController _nameController =
+      TextEditingController();
+
+  String? errorMessage;
+
+  Future<void> _onRegisterPressed() async {
+    try {
+      final user = User(
+        email: _emailController.text,
+        password: _passwordController.text,
+        name: _nameController.text,
+      );
+
+      await widget.authController.register(user);
+
+      Navigator.pop(context);
+    } catch (e) {
+      setState(() {
+        errorMessage = e.toString();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final r = AppResponsive.of(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -28,43 +65,46 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 spacing: 10,
                 children: [
                   SizedBox(height: r.spacing(140)),
+
                   switch (choosedCar) {
                     'porsche' => Image.asset(
-                      'assets/porsche911white.png',
-                      width: r.image(280),
-                      fit: BoxFit.contain,
-                    ),
-                    'bmw' => Image.asset(
-                      'assets/bmw.png',
-                      width: r.image(280),
-                      fit: BoxFit.contain,
-                    ),
-                    'audi' => Image.asset(
-                      'assets/audi.png',
-                      width: r.image(280),
-                      fit: BoxFit.contain,
-                    ),
-                    _ => Text(
-                      'CarInfo',
-                      style: AppTextStyles.appBarTittle(
-                        context,
-                        baseFontSize: 48,
+                        'assets/porsche911white.png',
+                        width: r.image(280),
                       ),
-                    ),
+                    'bmw' => Image.asset(
+                        'assets/bmw.png',
+                        width: r.image(280),
+                      ),
+                    'audi' => Image.asset(
+                        'assets/audi.png',
+                        width: r.image(280),
+                      ),
+                    _ => Text(
+                        'CarInfo',
+                        style: AppTextStyles.appBarTittle(
+                          context,
+                          baseFontSize: 48,
+                        ),
+                      ),
                   },
+
                   const SizedBox(height: 10),
+
                   DropdownButtonFormField(
                     decoration: AppBoxStyles.inputDecoration(
                       textLabel: 'Chose your car',
                     ),
-                    items: [
-                      const DropdownMenuItem(value: '', child: Text('None')),
-                      const DropdownMenuItem(
+                    items: const [
+                      DropdownMenuItem(value: '', child: Text('None')),
+                      DropdownMenuItem(
                         value: 'porsche',
                         child: Text('Porsche 911'),
                       ),
-                      const DropdownMenuItem(value: 'bmw', child: Text('BMW M5')),
-                      const DropdownMenuItem(
+                      DropdownMenuItem(
+                        value: 'bmw',
+                        child: Text('BMW M5'),
+                      ),
+                      DropdownMenuItem(
                         value: 'audi',
                         child: Text('Audi R8'),
                       ),
@@ -75,33 +115,47 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       });
                     },
                   ),
+
                   TextFormField(
+                    controller: _mileageController,
                     decoration: AppBoxStyles.inputDecoration(
-                      textLabel: 'Milieage in km',
+                      textLabel: 'Mileage in km',
                     ),
+                    keyboardType: TextInputType.number,
                   ),
+
                   TextFormField(
-                    decoration: AppBoxStyles.inputDecoration(textLabel: 'Email'),
+                    controller: _emailController,
+                    decoration:
+                        AppBoxStyles.inputDecoration(textLabel: 'Email'),
                   ),
+
                   TextFormField(
-                    decoration: AppBoxStyles.inputDecoration(
-                      textLabel: 'Password',
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration:
+                        AppBoxStyles.inputDecoration(textLabel: 'Password'),
+                  ),
+
+                  TextFormField(
+                    controller: _nameController,
+                    decoration:
+                        AppBoxStyles.inputDecoration(textLabel: 'Name'),
+                  ),
+
+                  if (errorMessage != null) ...[
+                    const SizedBox(height: 8),
+                    Text(
+                      errorMessage!,
+                      style: const TextStyle(color: Colors.red),
                     ),
-                  ),
-                  TextFormField(
-                    decoration: AppBoxStyles.inputDecoration(textLabel: 'Name'),
-                  ),
+                  ],
+
                   const SizedBox(height: 10),
+
                   BasicButton(
                     'Register',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<Widget>(
-                          builder: (context) => const Placeholder(),
-                        ),
-                      );
-                    },
+                    onPressed: _onRegisterPressed,
                   ),
                 ],
               ),
